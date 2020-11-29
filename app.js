@@ -71,7 +71,7 @@ const login = () => {
 const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user_id');
-    window.location.href = '/login.html';
+    window.location.href = '/DevDosh/login.html';
 }
 
 const calculateCategories = () => {
