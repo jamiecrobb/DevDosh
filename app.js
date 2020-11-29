@@ -88,7 +88,7 @@ const postMethodRegister = () => {
             method: 'post',
             url: 'https://evening-refuge-60189.herokuapp.com/expenses',
             data: {
-                user_id: '1'
+                user_id: ''
             }
         })
         .then((response) => {
