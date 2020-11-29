@@ -1,0 +1,167 @@
+* {
+  font-family: "Poppins", sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+nav {
+  background-color: white;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1 {
+  margin-right: auto;
+  margin-left: 5vh;
+}
+
+.links {
+  margin-right: 5vh;
+}
+
+.links a {
+  text-decoration: none;
+  color: black;
+  padding-left: 2vh;
+}
+
+body {
+  background: linear-gradient(to right, #6930c3, #5390d9);
+  /* background-color: #5e60ce; */
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 4vh;
+  column-gap: 4vh;
+  height: 80vh;
+  padding: 5vh;
+}
+
+.item {
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  padding: 1vh 3vh;
+  border-radius: 2vh;
+  background-color: white;
+  max-height: 80vh;
+}
+
+.expenses {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.linegraph {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  overflow-y: scroll;
+}
+
+.linegraph li {
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2);
+  padding: 1vh 3vh;
+  margin: 3vh;
+  border-radius: 2vh;
+}
+
+ul {
+  padding: 0;
+}
+
+form label {
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+input,
+select {
+  border: none;
+  border-radius: 7px;
+  padding: 5px 7px;
+  font-size: 1.1em;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  outline: none;
+}
+
+button {
+  width: 80%;
+  border: none;
+  background: rgb(78, 168, 222);
+  background: linear-gradient(
+    90deg,
+    rgba(78, 168, 222, 1) 0%,
+    rgba(86, 207, 225, 1) 100%
+  );
+  padding: 10px 28px;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  border-radius: 7px;
+  font-size: 1.2em;
+}
+
+.formsection {
+  padding: 3px;
+}
+
+@media (max-width: 414px) {
+  * {
+    overflow-y: auto;
+  }
+
+  .container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .items {
+    overflow: hidden;
+  }
+
+  .linegraph {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+
+  nav {
+    flex-direction: column;
+    height: auto;
+  }
+
+  h1 {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 1vh;
+    margin-top: 2vh;
+    font-size: 2em;
+  }
+
+  .links {
+    margin-right: 0;
+    margin-bottom: 1vh;
+  }
+
+  .nav-links.home {
+    padding-left: 0;
+  }
+}
