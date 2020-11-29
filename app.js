@@ -38,7 +38,7 @@ const register = () => {
         })
         .then((result) => {
             console.log(result);
-            window.location.href = '/login.html';
+            window.location.href = '/DevDosh/login.html';
             document.getElementById('email').value = email.value;
         })
         .catch((error) => {
@@ -61,7 +61,7 @@ const login = () => {
         .then((result) => {
             console.log(result);
             localStorage.setItem('user_id', result.data.user_id);
-            window.location.href = '/index.html';
+            window.location.href = '/DevDosh/index.html';
         })
         .catch((error) => {
             console.log(error);
