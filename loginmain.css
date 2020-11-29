@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: rgb(116, 0, 184);
+    background: linear-gradient(90deg, rgba(116, 0, 184, 1) 0%, rgba(94, 96, 206, 1) 100%);
+    overflow: hidden;
+
+}
+
+.circle {
+    position: absolute;
+    left: -20vh;
+    top: -20vh;
+    height: 60vh;
+    width: 60vh;
+    background: whitesmoke;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+
+.circle2 {
+    position: absolute;
+    right: -20vh;
+    bottom: -20vh;
+    height: 60vh;
+    width: 60vh;
+    background: whitesmoke;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.register {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerBox {
+    background: white;
+    width: 50vh;
+    padding: 4vh;
+    border-radius: 2vh;
+    -webkit-box-shadow: 1px 10px 45px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 10px 45px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 10px 45px -5px rgba(0, 0, 0, 0.75);
+}
+
+.formLabels {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+input[type=submit] {
+    width: 100%;
+    padding: 1vh;
+    background: rgb(78, 168, 222);
+    background: linear-gradient(90deg, rgba(78, 168, 222, 1) 0%, rgba(86, 207, 225, 1) 100%);
+    border: none;
+    border-radius: 1vh;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 3vh;
+}
+
+
+input[type=password],
+input[type=text],
+input[type=email] {
+    border: none;
+    padding: 1vh;
+    background: lightgray;
+    width: 80%;
+    border-radius: 1vh;
+}
+
+input[type=password]:focus,
+input[type=text]:focus {
+    outline: none;
+    ;
+}
+
+.titleContainer {
+    text-align: center;
+}
+
+h1 {
+    font-size: 5vh;
+}
+
+p {
+    font-size: 1.5vh;
+}
+
+.signIn {
+    margin-top: 3vh;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 3vh;
+}
