@@ -33,6 +33,7 @@ body {
   margin: 0;
   overflow-y: scroll;
 }
+
 @media (min-width: 1200px) {
   .outer {
     max-width: 1200px;
@@ -106,6 +107,7 @@ body {
   background-color: white;
   max-height: 80vh;
   text-align: center;
+  width: 30%;
 }
 
 @media (max-width: 414px) {
