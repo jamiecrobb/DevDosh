@@ -168,8 +168,6 @@ button {
   visibility: hidden;
   /* Hidden by default. Visible on click */
   min-width: 25vh;
-  /* Set a default minimum width */
-  margin-left: -12.5vh;
   /* Divide value of min-width by 2 */
   background-color: #333;
   /* Black background color */
@@ -186,6 +184,8 @@ button {
   z-index: 1;
   /* Add a z-index if needed */
   left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
   /* Center the snackbar */
   bottom: 3vh;
   /* 30px from the bottom */
