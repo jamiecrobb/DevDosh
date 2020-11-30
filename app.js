@@ -6,20 +6,18 @@ var gifts = 0;
 var travel = 0;
 var misc = 0;
 
-const retrieveToken = () => {
-    if (!localStorage.getItem('token')) {
-        alert('You need to login in!');
+const retrieveUser = () => {
+
+    const userTest = {
+        user_id: 0,
+    };
+
+    if (!localStorage.getItem('user')) {
+        snackbar('You should to login to store your own data!', '#FFCC00');
+        return userTest;
     }
 
-    return localStorage.getItem('token');
-}
-
-const retrieveUserId = () => {
-    if (!localStorage.getItem('user_id')) {
-        alert('You should login in to have your own data');
-        return 0;
-    }
-    return localStorage.getItem('user_id');
+    return JSON.parse(localStorage.getItem('user'));
 }
 
 const register = () => {
@@ -38,8 +36,10 @@ const register = () => {
         })
         .then((result) => {
             console.log(result);
-            window.location.href = '/DevDosh/login.html';
-            document.getElementById('email').value = email.value;
+            if (result.status === 201) {
+                window.location.href = 'login.html';
+                document.getElementById('email').value = email.value;
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -59,9 +59,17 @@ const login = () => {
             }
         })
         .then((result) => {
-            console.log(result);
-            localStorage.setItem('user_id', result.data.user_id);
-            window.location.href = '/DevDosh/index.html';
+            if (result.data.message == 'Logged in successfully') {
+                localStorage.setItem('user', JSON.stringify(result.data.user));
+                // trigger snackbar with success
+                snackbar(result.data.message, '#28A745');
+                setTimeout(function () {
+                    window.location.href = 'index.html';
+                }, 3000);
+            } else {
+                // trigger snackbar with error message
+                snackbar(result.data.message, '#ED4337');
+            }
         })
         .catch((error) => {
             console.log(error);
@@ -69,20 +77,43 @@ const login = () => {
 }
 
 const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user_id');
-    window.location.href = '/DevDosh/login.html';
+
+    const user = retrieveUser();
+
+    axios({
+            method: 'post',
+            url: 'https://evening-refuge-60189.herokuapp.com/users/logout',
+            data: {
+                email: user.email
+            }
+        })
+        .then((result) => {
+            console.log(result);
+            if (result.data.message == 'Logged out successfully') {
+                localStorage.removeItem('token');
+                localStorage.removeItem('user_id');
+                snackbar(result.data.message, '#28A745')
+                //window.location.href = 'login.html';
+            } else {
+                // trigger snackbar with error message
+                snackbar(result.data.message, '#ED4337');
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
 
 const calculateCategories = () => {
 
-    const user_id = retrieveUserId();
+    const user = retrieveUser();
+    console.log(user);
 
     axios({
             method: 'post',
             url: 'https://evening-refuge-60189.herokuapp.com/expenses',
             data: {
-                user_id: user_id
+                user_id: user.user_id
             }
         })
         .then((response) => {
@@ -92,25 +123,25 @@ const calculateCategories = () => {
 
                 switch (dataPulled[i].category) {
                     case "food":
-                        food += parseInt(dataPulled[i].value);
+                        food += parseFloat(dataPulled[i].value);
                         break;
                     case "rent":
-                        rent += parseInt(dataPulled[i].value);
+                        rent += parseFloat(dataPulled[i].value);
                         break;
                     case "utilities":
-                        utilities += parseInt(dataPulled[i].value);
+                        utilities += parseFloat(dataPulled[i].value);
                         break;
                     case "clothes":
-                        clothes += parseInt(dataPulled[i].value);
+                        clothes += parseFloat(dataPulled[i].value);
                         break;
                     case "gifts":
-                        gifts += parseInt(dataPulled[i].value);
+                        gifts += parseFloat(dataPulled[i].value);
                         break;
                     case "travel":
-                        travel += parseInt(dataPulled[i].value);
+                        travel += parseFloat(dataPulled[i].value);
                         break;
                     case "misc":
-                        misc += parseInt(dataPulled[i].value);
+                        misc += parseFloat(dataPulled[i].value);
                         break;
                 }
             }
@@ -216,13 +247,13 @@ const calculateTableChart = () => {
 
 const postMethodRegister = () => {
 
-    const user_id = retrieveUserId();
+    const user = retrieveUser();
 
     axios({
             method: 'post',
             url: `https://evening-refuge-60189.herokuapp.com/expenses`,
             data: {
-                user_id: user_id
+                user_id: user.user_id
             }
         })
         .then((response) => {
@@ -251,9 +282,9 @@ const postExpenses = () => {
     var item = document.getElementById("item");
     var type = document.getElementById("category");
 
-    const user_id = retrieveUserId();
-    if (user_id === 0) {
-        alert('You need to log in if you want to track expenses!');
+    const user = retrieveUser();
+    if (user.user_id === 0) {
+        snackbar('You need to log in if you want to track expenses!', '');
         return;
     }
 
@@ -261,7 +292,7 @@ const postExpenses = () => {
             method: 'post',
             url: 'https://evening-refuge-60189.herokuapp.com/expenses/add',
             data: {
-                user_id: user_id,
+                user_id: user.user_id,
                 value: money.value,
                 name: item.value,
                 category: type.value
@@ -269,9 +300,24 @@ const postExpenses = () => {
         })
         .then((response) => {
             postMethodRegister();
-            console.log(response);
+            snackbar(response.data.message, '#28A745');
         })
         .catch((error) => {
             console.log(error);
         });
+}
+
+
+const snackbar = (message, color) => {
+    // Get the snackbar DIV
+    let x = document.getElementById("snackbar");
+    x.innerHTML = message;
+    x.style.backgroundColor = color;
+    // Add the "show" class to DIV
+    x.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () {
+        x.className = x.className.replace("show", "");
+    }, 3000);
 }
