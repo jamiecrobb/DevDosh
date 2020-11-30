@@ -120,6 +120,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 0;
   }
 
   .items {
@@ -143,8 +144,19 @@ body {
     grid-row-end: 3;
   }
 
+  .pricing {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+  }
+
   .sub {
     flex-direction: column;
+  }
+
+  .card {
+    width: fit-content;
   }
 
   nav {
