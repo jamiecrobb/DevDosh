@@ -101,6 +101,11 @@ input[type=submit] {
     /* Spaces it out from the other inputs */
 }
 
+input[type=submit]:focus {
+    outline: none;
+    /* Removes outline when submit button is clicked */
+}
+
 /* Styling for the inputs with the types of password, text and email */
 input[type=password],
 input[type=text],
