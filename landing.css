@@ -17,6 +17,11 @@ h1 {
   margin-left: 5vh;
 }
 
+.pricing h2 {
+  color: white;
+  text-align: center;
+}
+
 .links {
   margin-right: 5vh;
 }
@@ -71,6 +76,10 @@ body {
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 3;
+}
+
+.hero h2, .hero p {
+  overflow: hidden;
 }
 
 .screengrab {
@@ -149,10 +158,13 @@ body {
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
+    height: 100vh;
+    overflow-y: none;
   }
 
   .sub {
     flex-direction: column;
+    overflow: hidden;
   }
 
   .card {
