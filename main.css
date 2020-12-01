@@ -101,7 +101,7 @@ select {
   outline: none;
 }
 
-button {
+#submit {
   width: 80%;
   border: none;
   background: rgb(78, 168, 222);
@@ -216,26 +216,32 @@ button {
 
 
 .remove {
-  width: 15vh;
+
   height: auto;
   position: relative;
   display: flex;
-  background: none;
   justify-content: center;
-}
-
-.remove:focus {
+  background: none;
   outline: none;
+  border: none;
+
 }
 
-.remove>img {
+svg {
+  position: relative;
   width: 3vh;
   height: auto;
 }
 
-.remove:hover {
+svg:hover {
   top: 0.1vh;
+  fill: gray;
+
 }
+
+
+
+
 
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
