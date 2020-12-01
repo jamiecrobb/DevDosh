@@ -1,19 +1,23 @@
+/* Resets the webpage styling */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
 }
 
 
 body {
     font-family: 'Poppins', sans-serif;
+    /* Changes font */
     background: rgb(116, 0, 184);
     background: linear-gradient(90deg, rgba(116, 0, 184, 1) 0%, rgba(94, 96, 206, 1) 100%);
+    /* Background is a gradient, if it's not supported, then its just a solid color */
     overflow: hidden;
+    /* Gets rid of overflow (may need to change for it to work on mobile */
 
 }
 
+/* Circles in the bottom right and top left corners */
 .circle {
     position: absolute;
     left: -20vh;
@@ -23,6 +27,7 @@ body {
     background: whitesmoke;
     border-radius: 50%;
     z-index: -1;
+    /* Places it behind the login / sign up box if they come into contact */
 }
 
 
@@ -35,15 +40,20 @@ body {
     background: whitesmoke;
     border-radius: 50%;
     z-index: -1;
+    /* Places it behind the login / sign up box if they come into contact */
 }
 
+
+/* Container for all the register / login stuff */
 .register {
     display: flex;
     height: 100vh;
     justify-content: center;
     align-items: center;
+    /* centers the register / login box */
 }
 
+/* Styling of the login / register box */
 .registerBox {
     background: white;
     width: 50vh;
@@ -54,62 +64,182 @@ body {
     box-shadow: 1px 10px 45px -5px rgba(0, 0, 0, 0.75);
 }
 
+
+/* Styling of the labels and inputs */
 .formLabels {
     display: flex;
     flex-direction: column;
+    /*puts them in a column*/
     justify-content: center;
-    align-items: center;
-}
-
-
-input[type=submit] {
-    width: 100%;
-    padding: 1vh;
-    background: rgb(78, 168, 222);
-    background: linear-gradient(90deg, rgba(78, 168, 222, 1) 0%, rgba(86, 207, 225, 1) 100%);
-    border: none;
-    border-radius: 1vh;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 3vh;
-}
-
-
-input[type=password],
-input[type=text],
-input[type=email] {
-    border: none;
-    padding: 1vh;
-    background: lightgray;
-    width: 80%;
-    border-radius: 1vh;
-}
-
-input[type=password]:focus,
-input[type=text]:focus {
-    outline: none;
-    ;
-}
-
-.titleContainer {
-    text-align: center;
-}
-
-h1 {
-    font-size: 5vh;
-}
-
-p {
-    font-size: 1.5vh;
-}
-
-.signIn {
-    margin-top: 3vh;
-    text-align: center;
+    align-items: flex-start;
+    /*Makes them start from the left in the register / login box*/
 }
 
 label {
     font-weight: bold;
     margin-top: 3vh;
+    /* Add a top margin on each label */
+}
+
+
+/* Styling for the submit buttons (login and sign up) */
+input[type=submit] {
+    width: 100%;
+    /* Makes it max width of the box container */
+    padding: 1vh;
+    background: rgb(78, 168, 222);
+    background: linear-gradient(90deg, rgba(78, 168, 222, 1) 0%, rgba(86, 207, 225, 1) 100%);
+    /* Gives the button a nice gradient */
+    border: none;
+    /* Gets rid of any border around it */
+    border-radius: 1vh;
+    /* Curves the corners */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 3vh;
+    /* Spaces it out from the other inputs */
+}
+
+input[type=submit]:focus {
+    outline: none;
+    /* Removes outline when submit button is clicked */
+}
+
+/* Styling for the inputs with the types of password, text and email */
+input[type=password],
+input[type=text],
+input[type=email] {
+    border: none;
+    /* Gets rid of any borders they have  */
+    padding: 1vh;
+    background: lightgray;
+    width: 100%;
+    /* Makes them 100% of the width of the box */
+    border-radius: 1vh;
+}
+
+input[type=password]:focus,
+input[type=text]:focus,
+input[type=email]:focus {
+    outline: none;
+    /* When they are clicked, it gets rid of the black outline */
+}
+
+
+/*Styling for the headings */
+.titleContainer {
+    text-align: center;
+    /* Aligns all the text into the center */
+}
+
+h1 {
+    font-size: 5vh;
+    /*Changes the font-size of the main heading */
+}
+
+p {
+    font-size: 1.5vh;
+    /*Changes the font-size of all paragraphs */
+}
+
+/* Styling for the bottom text of the sign up / login box */
+.signIn {
+    margin-top: 3vh;
+    /* Add a top margin to seperate it from the submit button */
+    text-align: center;
+    /*aligns the text to the center */
+}
+
+#snackbar {
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 25vh;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Black background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2vh;
+    /* Rounded borders */
+    padding: 2vh 3vh 2vh 3vh;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 1;
+    /* Add a z-index if needed */
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    /* Center the snackbar */
+    bottom: 3vh;
+    /* 30px from the bottom */
+    font-family: 'Poppins', sans-serif;
+    /* Changes font */
+    font-weight: bold;
+    /* Changes fonts weight to bold */
+    font-size: 2vh;
+    /* Changes font size */
+
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible;
+    /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
