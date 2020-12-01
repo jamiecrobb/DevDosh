@@ -36,7 +36,6 @@ body {
   background: linear-gradient(to right, #6930c3, #5390d9);
   /* background-color: #5e60ce; */
   margin: 0;
-  overflow-y: scroll;
 }
 
 @media (min-width: 1200px) {
@@ -124,6 +123,10 @@ body {
     overflow-y: auto;
   }
 
+  body {
+      overflow-y: scroll;
+  }
+
   .container {
     height: 100%;
     display: grid;
@@ -192,4 +195,19 @@ body {
   .nav-links.home {
     padding-left: 0;
   }
+}
+
+footer {
+  background-color: white;
+  height: fit-content;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.right p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.3vh;
 }
