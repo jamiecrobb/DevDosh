@@ -75,6 +75,7 @@ body {
   border-radius: 2vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 ul {
@@ -212,20 +213,28 @@ button {
 }
 
 
+
+
 .remove {
-  width: 4vh;
-  font-size: 5vh;
+  width: 15vh;
+  height: auto;
   position: relative;
   display: flex;
-  float: right;
-  color: black;
   background: none;
   justify-content: center;
-
 }
 
 .remove:focus {
   outline: none;
+}
+
+.remove>img {
+  width: 3vh;
+  height: auto;
+}
+
+.remove:hover {
+  top: 0.1vh;
 }
 
 /* Animations to fade the snackbar in and out */

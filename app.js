@@ -264,7 +264,7 @@ const postMethodRegister = () => {
                 if (typeof expenseList[i] == "undefined") {
                     break;
                 }
-                parentList += '<li>' + `(£${expenseList[i].value})` + " " + expenseList[i].name + `<button onclick="removeExpenses(${expenseList[i].id})" class="remove">&#x1F5D1;</button></li>`;
+                parentList += '<li>' + `(£${expenseList[i].value})` + " " + expenseList[i].name + `<button onclick="removeExpenses(${expenseList[i].id})" class="remove"><img src="garbage.svg" alt="garbage"/></button></li>`;
 
             }
 
@@ -312,6 +312,7 @@ const postExpenses = () => {
 
 const removeExpenses = (id) => {
 
+
     axios({
             method: 'post',
             url: 'https://evening-refuge-60189.herokuapp.com/expenses/delete',
@@ -323,6 +324,8 @@ const removeExpenses = (id) => {
             snackbar(result.data.message, '#28A745');
             postMethodRegister();
             console.log(result);
+
+
         })
         .catch((error) => {
             console.log(error);
