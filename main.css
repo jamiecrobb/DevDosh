@@ -1,6 +1,5 @@
 * {
   font-family: "Poppins", sans-serif;
-  overflow-y: hidden;
   overflow-x: hidden;
 }
 
@@ -51,6 +50,7 @@ body {
   border-radius: 2vh;
   background-color: white;
   max-height: 80vh;
+  overflow-y: hidden;
 }
 
 .expenses {
@@ -165,6 +165,22 @@ select {
   .nav-links.home {
     padding-left: 0;
   }
+}
+
+
+footer {
+  background-color: white;
+  height: fit-content;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.right p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.3vh;
 }
 
 #snackbar {
