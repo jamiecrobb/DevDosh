@@ -53,6 +53,7 @@ const login = () => {
     axios({
             method: 'post',
             url: 'https://evening-refuge-60189.herokuapp.com/users/login',
+            withCredentials: 'true',
             data: {
                 email: email.value,
                 password: password.value
@@ -83,17 +84,18 @@ const logout = () => {
     axios({
             method: 'post',
             url: 'https://evening-refuge-60189.herokuapp.com/users/logout',
+            withCredentials: 'true',
             data: {
                 email: user.email
             }
         })
         .then((result) => {
-            console.log(result);
             if (result.data.message == 'Logged out successfully') {
-                localStorage.removeItem('token');
-                localStorage.removeItem('user_id');
+                localStorage.removeItem('user');
                 snackbar(result.data.message, '#28A745')
-                //window.location.href = 'login.html';
+                setTimeout(function () {
+                    window.location.href = 'login.html';
+                }, 3000);
             } else {
                 // trigger snackbar with error message
                 snackbar(result.data.message, '#ED4337');
@@ -107,7 +109,6 @@ const logout = () => {
 const calculateCategories = () => {
 
     const user = retrieveUser();
-    console.log(user);
 
     axios({
             method: 'post',
@@ -263,19 +264,20 @@ const postMethodRegister = () => {
                 if (typeof expenseList[i] == "undefined") {
                     break;
                 }
-                parentList += '<li>' + `(£${expenseList[i].value})` + " " + expenseList[i].name + '</li>';
+                parentList += '<li>' + `(£${expenseList[i].value})` + " " + expenseList[i].name + `<button onclick="removeExpenses(${expenseList[i].id})" class="remove">&#x1F5D1;</button></li>`;
 
             }
 
             parentList += '</ul>';
             document.getElementById('expenses').innerHTML = parentList;
             calculateCategories();
-            console.log(response);
         })
         .catch((error) => {
             console.log(error);
         });
 }
+
+
 
 const postExpenses = () => {
     var money = document.getElementById("sum");
@@ -307,6 +309,25 @@ const postExpenses = () => {
         });
 }
 
+
+const removeExpenses = (id) => {
+
+    axios({
+            method: 'post',
+            url: 'https://evening-refuge-60189.herokuapp.com/expenses/delete',
+            data: {
+                expense_id: id
+            }
+        })
+        .then((result) => {
+            snackbar(result.data.message, '#28A745');
+            postMethodRegister();
+            console.log(result);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
 
 const snackbar = (message, color) => {
     // Get the snackbar DIV
