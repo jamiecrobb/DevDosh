@@ -231,8 +231,13 @@ footer {
 
 
 
-.remove {
+.editContainer {
+  display: flex;
+  align-items: center;
+}
 
+.remove,
+.edit {
   height: auto;
   position: relative;
   display: flex;
@@ -242,6 +247,8 @@ footer {
   border: none;
 
 }
+
+
 
 svg {
   position: relative;
