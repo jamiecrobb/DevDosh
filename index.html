@@ -34,12 +34,12 @@
                             <label for="sum">How much did you spend?</label>
                             <input type="number" id="sum" required placeholder="£" min="1" step="any">
                         </div>
-                        <br>
+
                         <div class="formsection">
                             <label for="item">What did you spend on?</label>
                             <input type="text" id="item" name="item" required placeholder="eg. Meal out.">
                         </div>
-                        <br>
+
                         <div class="formsection">
                             <label for="category">What category of spending was it?</label>
                             <select name="category" id="category" required>
@@ -76,10 +76,49 @@
                 </div>
             </div>
         </section>
+        <section class="expenseModal" id="expenseModal">
+            <div class="modalContent">
+                <span class="close">&times;</span>
+                <form action="#" class="editForm">
+                    <h2>Edit Expense</h2>
+                    <div class="formsection">
+                        <label for="editMoney">Edit how much you spent!</label>
+                        <input type="number" name="editMoney" id="editMoney" placeholder="£ required">
+                    </div>
+
+
+                    <div class="formsection">
+                        <label for="editName">Edit how much you spent!</label>
+                        <input type="text" name="editName" id="editName" placeholder="eg. Meal Out." required>
+                    </div>
+
+                    <div class="formsection">
+                        <label for="editCategory">Edit how much you spent!</label>
+                        <select name="editCategory" id="editCategory" required>
+                            <option value="food">Food</option>
+                            <option value="rent">Rent</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="clothes">Clothes</option>
+                            <option value="gifts">Gifts</option>
+                            <option value="travel">Travel</option>
+                            <option value="misc">Miscellaneous</option>
+                        </select>
+                    </div>
+
+                    <div class="formsection">
+                        <input type="submit">
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
     </main>
     <footer>
         <div class="right">
-            <p>DevDosh.com is a portfolio project and as such your personal details ARE NOT secure. We WILL NOT take responsibility for any consequences caused by use of our site. Users must do so at their own risk. The site could be taken down at any time, so do not rely on it to store your information.</p>
+            <p>DevDosh.com is a portfolio project and as such your personal details ARE NOT secure. We WILL NOT take
+                responsibility for any consequences caused by use of our site. Users must do so at their own risk. The
+                site could be taken down at any time, so do not rely on it to store your information.</p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
