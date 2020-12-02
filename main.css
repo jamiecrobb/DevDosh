@@ -267,7 +267,7 @@ svg:hover {
 
 /* The Modal (background) */
 .expenseModal {
-
+  display: none;
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
