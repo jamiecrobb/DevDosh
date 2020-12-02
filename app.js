@@ -109,14 +109,11 @@ const logout = () => {
 
 const calculateCategories = () => {
 
-    const user = retrieveUser();
+    //const user = retrieveUser();
 
     axios({
-            method: 'post',
-            url: 'https://evening-refuge-60189.herokuapp.com/expenses',
-            data: {
-                user_id: user.user_id
-            }
+            method: 'get',
+            url: 'https://evening-refuge-60189.herokuapp.com/expensestd'
         })
         .then((response) => {
             let dataPulled = response.data;
@@ -249,14 +246,11 @@ const calculateTableChart = () => {
 
 const postMethodRegister = () => {
 
-    const user = retrieveUser();
+    //const user = retrieveUser();
 
     axios({
-            method: 'post',
-            url: `https://evening-refuge-60189.herokuapp.com/expenses`,
-            data: {
-                user_id: user.user_id
-            }
+            method: 'get',
+            url: `https://evening-refuge-60189.herokuapp.com/expensestd`
         })
         .then((response) => {
             let parentList = '<ul>'
