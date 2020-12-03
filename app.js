@@ -93,6 +93,7 @@ const login = () => {
                 snackbar(result.data.message, '#28A745');
                 setTimeout(function () {
                     //window.location.href = 'index.html'; 
+                    logout();
                 }, 3000);
             } else {
                 // trigger snackbar with error message
@@ -109,17 +110,14 @@ const logout = () => {
     axios({
             method: 'post',
             url: `${API_URL}/users/logout`,
-            withCredentials: 'true',
-            data: {
-                email: user.email
-            }
+            withCredentials: 'true'
         })
         .then((result) => {
             if (result.data.message == 'Logged out successfully') {
                 localStorage.removeItem('user');
                 snackbar(result.data.message, '#28A745', 3000)
                 setTimeout(function () {
-                    window.location.href = 'login.html';
+                    //window.location.href = 'login.html';
                 }, 3000);
             } else {
                 // trigger snackbar with error message
