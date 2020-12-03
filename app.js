@@ -92,8 +92,7 @@ const login = () => {
                 // trigger snackbar with success
                 snackbar(result.data.message, '#28A745');
                 setTimeout(function () {
-                    //window.location.href = 'index.html'; 
-                    logout();
+                    window.location.href = 'index.html';                     
                 }, 3000);
             } else {
                 // trigger snackbar with error message
@@ -117,7 +116,7 @@ const logout = () => {
                 localStorage.removeItem('user');
                 snackbar(result.data.message, '#28A745', 3000)
                 setTimeout(function () {
-                    //window.location.href = 'login.html';
+                    window.location.href = 'login.html';
                 }, 3000);
             } else {
                 // trigger snackbar with error message
