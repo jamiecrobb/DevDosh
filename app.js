@@ -106,8 +106,6 @@ const login = () => {
 
 const logout = () => {
 
-    const user = retrieveUser();
-
     axios({
             method: 'post',
             url: `${API_URL}/users/logout`,
