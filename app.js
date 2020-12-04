@@ -92,7 +92,7 @@ const login = () => {
                 // trigger snackbar with success
                 snackbar(result.data.message, '#28A745');
                 setTimeout(function () {
-                    window.location.href = 'index.html';                     
+                    //window.location.href = 'index.html';                     
                 }, 3000);
             } else {
                 // trigger snackbar with error message
