@@ -75,27 +75,8 @@ const register = () => {
 const login = () => {
     var email = document.getElementById('email');
     var password = document.getElementById('password');
-
-    fetch(`${API_URL}/users/login`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: {
-            email: email.value,
-            password: password.value
-        },
-    })
-    .then((result) => {
-        console.log(result);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
     
-    /*axios({
+    axios({
             method: 'post',
             url: `${API_URL}/users/login`,
             withCredentials: 'true',
@@ -119,7 +100,7 @@ const login = () => {
         })
         .catch((error) => {
             console.log(error);
-        })*/
+        });
 }
 
 const logout = () => {
