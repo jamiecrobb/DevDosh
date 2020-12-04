@@ -79,10 +79,14 @@ const login = () => {
     fetch(`${API_URL}/users/login`, {
         method: 'POST',
         credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
         body: {
             email: email.value,
             password: password.value
-        }
+        },
     })
     .then((result) => {
         console.log(result);
