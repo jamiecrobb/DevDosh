@@ -84,7 +84,7 @@ const login = () => {
             password: password.value
         }
     })
-    .then((result => {
+    .then((result) => {
         console.log(result);
     })
     .catch((error) => {
