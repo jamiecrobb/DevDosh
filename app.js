@@ -87,8 +87,7 @@ const login = () => {
         })
         .then((result) => {
             console.log(result);
-            if (result.data.message == 'Logged in successfully') {
-                localStorage.setItem('user', JSON.stringify(result.data.user));
+            if (result.data.message == 'Logged in successfully') {                
                 // trigger snackbar with success
                 snackbar(result.data.message, '#28A745');
                 setTimeout(function () {
@@ -113,7 +112,6 @@ const logout = () => {
         })
         .then((result) => {
             if (result.data.message == 'Logged out successfully') {
-                localStorage.removeItem('user');
                 snackbar(result.data.message, '#28A745', 3000)
                 setTimeout(function () {
                     window.location.href = 'login.html';
