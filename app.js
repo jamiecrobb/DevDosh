@@ -14,40 +14,40 @@ const API_URL = 'https://evening-refuge-60189.herokuapp.com';
 const retrieveExpenses = () => {
 
     axios({
-        method: 'get',
-        url: `${API_URL}/expenses`,
-        withCredentials: 'true',
-    })
-    .then((result) => {
-        document.getElementById('loginout').innerHTML = 'Logout';        
-        calculateLatestExpenses(result.data);
-        calculateCategories(result.data);
-        calculateDoughnutChart();
-        calculateTableChart();
-    })
-    .catch((error) => {
-        //console.log(error.response);
-        document.getElementById('loginout').innerHTML = 'Login';
-        document.getElementById('loginout').href = 'login.html';
-        if (error.response.status === 401) {            
-            retrieveTestData();
-            snackbar('Loaded test data. Log in to store your own data', '#F8C630')
-        }
-    })
+            method: 'get',
+            url: `${API_URL}/expenses`,
+            withCredentials: 'true',
+        })
+        .then((result) => {
+            document.getElementById('loginout').innerHTML = 'Logout';
+            calculateLatestExpenses(result.data);
+            calculateCategories(result.data);
+            calculateDoughnutChart();
+            calculateTableChart();
+        })
+        .catch((error) => {
+            //console.log(error.response);
+            document.getElementById('loginout').innerHTML = 'Login';
+            document.getElementById('loginout').href = 'login.html';
+            if (error.response.status === 401) {
+                retrieveTestData();
+                snackbar('Loaded test data. Log in to store your own data', '#F8C630')
+            }
+        })
 }
 
 const retrieveTestData = () => {
     axios({
-        method: 'get',
-        url: `${API_URL}/expensestd`,
-    })
-    .then((result) => {
-        calculateLatestExpenses(result.data);
-        calculateCategories(result.data);
-    })
-    .catch((error) => {
-        console.log(error.response);        
-    })
+            method: 'get',
+            url: `${API_URL}/expensestd`,
+        })
+        .then((result) => {
+            calculateLatestExpenses(result.data);
+            calculateCategories(result.data);
+        })
+        .catch((error) => {
+            console.log(error.response);
+        })
 }
 
 const register = () => {
@@ -79,7 +79,7 @@ const register = () => {
 const login = () => {
     var email = document.getElementById('email');
     var password = document.getElementById('password');
-    
+
     axios({
             method: 'post',
             url: `${API_URL}/users/login`,
@@ -94,7 +94,7 @@ const login = () => {
                 // trigger snackbar with success
                 snackbar(result.data.message, '#28A745');
                 setTimeout(function () {
-                    window.location.href = 'index.html';                     
+                    window.location.href = 'index.html';
                 }, 3000);
             } else {
                 // trigger snackbar with error message
@@ -132,7 +132,7 @@ const logout = () => {
 
 const calculateCategories = (data) => {
 
-    let dataPulled = data;    
+    let dataPulled = data;
 
     for (let i = 0; i < dataPulled.length; i++) {
 
@@ -257,7 +257,7 @@ const calculateTableChart = () => {
 }
 
 const calculateLatestExpenses = (data) => {
-    
+
     let parentList = '<ul>'
     var expenseList = data;
     for (let i = expenseList.length - 1; i >= 0; i--) {
