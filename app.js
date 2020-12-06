@@ -264,7 +264,7 @@ const calculateLatestExpenses = (data) => {
         if (typeof expenseList[i] == "undefined") {
             break;
         }
-        parentList += '<li>' + `(£${expenseList[i].value})` + " " + expenseList[i].name + `<button onclick="removeExpenses(${expenseList[i].id})" class="remove">&#x1F5D1;</button></li>`;
+        parentList += '<li>' + `(£${expenseList[i].value})` + " " + expenseList[i].name + `<div class="editContainer"><button class="edit">${editSvg}</button>` + `<button onclick="removeExpenses(${expenseList[i].id})" class="remove">${garbageSvg}</button></div></li>`;
 
     }
 
