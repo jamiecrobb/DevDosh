@@ -10,7 +10,7 @@
     <title>Expense Tracker</title>
 </head>
 
-<body onload="retrieveExpenses()">
+<body onload="loadApp()">
     <header>
         <nav>
             <span class="navbar-toggle" id="js-navbar-toggle">
@@ -78,8 +78,8 @@
         </section>
         <section class="expenseModal" id="expenseModal">
             <div class="modalContent">
-                <span class="close">&times;</span>
-                <form action="#" class="editForm">
+                <span class="close" onclick="closeEditModal()">&times;</span>
+                <form action="javascript:saveEditExpense();" class="editForm" id="editForm">
                     <h2>Edit Expense</h2>
                     <div class="formsection">
                         <label for="editMoney">Edit how much you spent!</label>
@@ -87,12 +87,12 @@
                     </div>
 
                     <div class="formsection">
-                        <label for="editName">Edit how much you spent!</label>
+                        <label for="editName">Edit what you spent!</label>
                         <input type="text" name="editName" id="editName" placeholder="eg. Meal Out." required>
                     </div>
 
                     <div class="formsection">
-                        <label for="editCategory">Edit how much you spent!</label>
+                        <label for="editCategory">Edit category spent!</label>
                         <select name="editCategory" id="editCategory" required>
                             <option value="food">Food</option>
                             <option value="rent">Rent</option>
@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="formsection">
-                        <input type="submit">
+                        <button type="submit">Save edit</button>
                     </div>
 
                 </form>

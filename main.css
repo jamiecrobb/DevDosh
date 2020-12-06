@@ -309,6 +309,7 @@ svg:hover {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -328,7 +329,7 @@ svg:hover {
 
 }
 
-input[type=submit] {
+button[type=submit] {
   width: 30%;
   border: none;
   background: rgb(78, 168, 222);
