@@ -300,7 +300,8 @@ const postExpenses = () => {
             data: {
                 value: money.value,
                 name: item.value,
-                category: type.value
+                category: type.value,
+                date: '12/06/2020 @ 4:12pm (UTC)'
             }
         })
         .then((response) => {
@@ -376,7 +377,8 @@ const saveEditExpense = (expense_id) => {
             expense_id: expense_id,
             value: money,
             name: name,
-            category: category
+            category: category,
+            date: '12/06/2020 @ 4:12pm (UTC)'
         }
     })
     .then((response) => {
