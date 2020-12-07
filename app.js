@@ -16,6 +16,7 @@ const API_URL = 'https://evening-refuge-60189.herokuapp.com';
 const loadApp = () => {
     initializeCharts();
     retrieveExpenses();
+    document.getElementById('date').value = new Date(Date.now()).toISOString().slice(0, 10);
 }
 
 const retrieveExpenses = () => {
@@ -278,8 +279,8 @@ const calculateLatestExpenses = (data) => {
         if (typeof data[i] == "undefined") {
             break;
         }
-        parentList += '<li>' + `(£${data[i].value})` + " " + data[i].name + `<div class="editContainer"><button class="edit" onclick="editExpense(${data[i].id}, '${data[i].name}', ${data[i].value}, '${data[i].category}')">${editSvg}</button>` + `<button onclick="removeExpenses(${data[i].id})" class="remove">${garbageSvg}</button></div></li>`;
-
+        const date = new Date(data[i].date);
+        parentList += '<li>' + `(£${data[i].value})` + " " + data[i].name + " - " + `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}` + `<div class="editContainer"><button class="edit" onclick="editExpense(${data[i].id}, '${data[i].name}', ${data[i].value}, '${data[i].category}', '${data[i].date}')">${editSvg}</button>` + `<button onclick="removeExpenses(${data[i].id})" class="remove">${garbageSvg}</button></div></li>`;
     }
 
     parentList += '</ul>';
@@ -292,6 +293,9 @@ const postExpenses = () => {
     var money = document.getElementById("sum");
     var item = document.getElementById("item");
     var type = document.getElementById("category");
+    var date = document.getElementById("date");
+
+    var timestamp = new Date(date.value).toISOString();
 
     axios({
             method: 'post',
@@ -301,7 +305,7 @@ const postExpenses = () => {
                 value: money.value,
                 name: item.value,
                 category: type.value,
-                date: '12/06/2020 @ 4:12pm (UTC)'
+                date: timestamp
             }
         })
         .then((response) => {
@@ -331,7 +335,6 @@ const removeExpenses = (id) => {
         .then((result) => {
             snackbar(result.data.message, '#28A745');
             retrieveExpenses();
-            console.log(result);
         })
         .catch((error) => {
             //console.log(error.response);
@@ -355,11 +358,15 @@ const snackbar = (message, color, time) => {
     }, time ? time : 3000);
 }
 
-const editExpense = (expense_id, expense_name, expense_value, expense_category) => {
+const editExpense = (expense_id, expense_name, expense_value, expense_category, expense_date) => {
+
+    date = expense_date.slice(0,10);
+
     document.getElementById('expenseModal').style.display = 'block';
     document.getElementById('editMoney').value = expense_value;
     document.getElementById('editName').value = expense_name;
     document.getElementById('editCategory').value = expense_category;
+    document.getElementById('editDate').value = date;
     document.getElementById('editForm').action = `javascript: saveEditExpense(${expense_id})`;
 }
 
@@ -367,8 +374,11 @@ const saveEditExpense = (expense_id) => {
     var money = document.getElementById('editMoney').value;
     var name = document.getElementById('editName').value;
     var category = document.getElementById('editCategory').value;
+    var date = document.getElementById('editDate').value;
 
-    console.log(expense_id, money, name, category);
+    date = new Date(date).toISOString();
+
+    console.log(expense_id, money, name, category, date);
     axios({
         method: 'post',
         url: `${API_URL}/expenses/update`,
@@ -378,7 +388,7 @@ const saveEditExpense = (expense_id) => {
             value: money,
             name: name,
             category: category,
-            date: '12/06/2020 @ 4:12pm (UTC)'
+            date: date
         }
     })
     .then((response) => {
