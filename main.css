@@ -97,7 +97,12 @@ select {
 
 input[type="text"],
 input[type="number"],
+input[type="date"],
 select {
+  outline: none;
+}
+
+input[type="date"]:focus {
   outline: none;
 }
 
